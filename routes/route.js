@@ -38,6 +38,17 @@ module.exports = function(app){
     .put(funcionarioController.update)
     .delete(funcionarioController.delete);
     
+    //funcionarioCurso
+    var funcionarioCursoController = require('../controllers/funcionarioCursoController')
+        
+    app.route('/funcionarioCursos')
+    .get(funcionarioCursoController.findAll)
+    .post(funcionarioCursoController.create);
+    
+    app.route('/funcionarioCursos/:id')
+    .get(funcionarioCursoController.findByPk)
+    .put(funcionarioCursoController.update)
+    .delete(funcionarioCursoController.delete);
     
     //setor
     var setorController = require('../controllers/setorController')
