@@ -21,6 +21,14 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'usuarioId',
       soucerKey: 'usuarioId'
     })
+    funcionario.belongsTo(models.setor,{ 
+      foreignKey: 'setorId',
+      soucerKey: 'setorId'
+    })
+    funcionario.belongsTo(models.funcao,{ 
+      foreignKey: 'funcaoId',
+      soucerKey: 'funcaoId'
+    })
     funcionario.hasMany(models.funcionarioCurso,{
 
       foreignKey: 'funcionarioId', 
