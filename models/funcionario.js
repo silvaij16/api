@@ -29,12 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'funcaoId',
       soucerKey: 'funcaoId'
     })
-    funcionario.hasMany(models.funcionarioCurso,{
-
-      foreignKey: 'funcionarioId', 
-      targetKey: 'funcionarioId'
-      
-    })
   };
   return funcionario;
 };
+
