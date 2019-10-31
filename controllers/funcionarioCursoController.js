@@ -55,4 +55,16 @@ module.exports = {
 
 }
 
+/*SELECT nome FROM usuarios 
+INNER JOIN funcionarios 
+ON usuarios.Id = funcionarios.usuarioId 
+INNER JOIN funcionarioCursos 
+ON funcionarios.Id = funcionarioCursos.funcionarioId 
+INNER JOIN cursos 
+ON funcionarioCursos.cursoId  = cursos.id 
+WHERE cursoId = 1 */
+
+
+//https://stackoverflow.com/questions/20460270/how-to-make-join-queries-using-sequelize-on-node-js
+
 

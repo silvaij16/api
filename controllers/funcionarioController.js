@@ -5,20 +5,17 @@ module.exports = {
     findAll:async (req,res)=>{
         try{
             let funcionario = await db.funcionario.findAll({
-                attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero',
-                'logradouro','bairro','cidade','uf'],
-                include: [{
-                    model: db.usuario,
-                    attributes:['id','nome','email','passWorld']
-                }],
-                include: [{
+                attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'],
+                include: [
+                    {model: db.usuario,
+                    attributes:['id','nome','email','passWorld']   
+                },{
                     model: db.setor,
                     attributes:['id','descricao']
-                }],
-                include: [{
+                },{
                     model: db.funcao,
                     attributes:['id','descricao']
-                }],
+                }]
             })
             res.json(funcionario)
         }
@@ -98,3 +95,15 @@ module.exports = {
 //         sendStatus(400)
 //     }
 // },
+// include: [
+//     {model: db.usuario,
+//     attributes:['id','nome','email','passWorld']   
+// }],
+// include: [{
+//     model: db.setor,
+//     attributes:['id','descricao']
+// }],
+// include: [{
+//     model: db.funcao,
+//     attributes:['id','descricao']
+// }]
