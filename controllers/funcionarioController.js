@@ -8,7 +8,7 @@ module.exports = {
                 attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'],
                 include: [
                     {model: db.usuario,
-                    attributes:['id','nome','email','passWorld']   
+                    attributes:['id','nome','email','passWorld']
                 },{
                     model: db.setor,
                     attributes:['id','descricao']
@@ -107,3 +107,12 @@ module.exports = {
 //     model: db.funcao,
 //     attributes:['id','descricao']
 // }]
+/*let funcionario = await db.funcionario.findAll({
+                attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'],
+                include: [
+                    {model: db.usuario,
+                    attributes:['id','nome','email','passWorld'],
+                    include: [{
+                        model
+                    }]
+                },{ */
