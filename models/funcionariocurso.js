@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     cursoId: DataTypes.INTEGER
   }, {});
   funcionarioCurso.associate = function(models) {
-    funcionarioCurso.belongsToMany(models.funcionario,{
+    funcionarioCurso.belongsTo(models.funcionario,{
       through: 'funcionarioCursos',
       foreignKey: 'funcionarioId', 
       soucerKey: 'funcionarioId'  
     })
-    funcionarioCurso.belongsToMany(models.curso,{
+    funcionarioCurso.belongsTo(models.curso,{
       through: 'funcionarioCursos',
       foreignKey: 'cursoId', 
       soucerKey: 'cursoId'  

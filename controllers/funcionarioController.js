@@ -2,27 +2,50 @@ let db = require("../models")
 
 module.exports = {
 
+    
     findAll:async (req,res)=>{
-        try{
-            let funcionario = await db.funcionario.findAll({
-                attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'],
-                include: [
-                    {model: db.usuario,
-                    attributes:['id','nome','email','passWorld']
-                },{
-                    model: db.setor,
-                    attributes:['id','descricao']
-                },{
-                    model: db.funcao,
-                    attributes:['id','descricao']
-                }]
-            })
-            res.json(funcionario)
-        }
-        catch(error){
-            sendStatus(400)
-        }
-    },
+        var funcionarioFiltrado = [];
+            try{
+                let funcionario = await db.funcionario.findAll({
+                    attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'],
+                    include: 
+                    [
+                        {model: db.usuario,
+                        attributes:['id','nome','email','passWorld']  
+                    },{
+                        model: db.setor,
+                        attributes:['id','descricao']
+                    },{
+                        model: db.funcao,
+                        attributes:['id','descricao']
+                     },{
+                        model: db.funcionariocurso,
+                        include: {
+                            model: db.curso,
+                            attributes:['id','descricao']
+                        }
+                     }
+                    ]
+                })
+                for (var i = 0; i < funcionario.length; i++) {
+                 funcionarioFiltrado.push({
+                 id: funcionario[i].id,
+                 nome: funcionario[i].usuario.nome,
+                 setor: funcionario[i].setor.descricao,
+                 funcao: funcionario[i].funcao.descricao,
+                 //cursoId: funcionario[i].funcionarioCurso.cursoId,
+                 curso: funcionario[i].curso.descricao
+                });
+    
+                }
+    
+                res.json(funcionarioFiltrado);
+            }
+            catch(error){
+                res.sendStatus(400)
+            }
+        },
+    
     
 // findAll:async (req,res)=>{
 //     try{

@@ -7,18 +7,18 @@ module.exports = (sequelize, DataTypes) => {
     dataConclusao: DataTypes.DATE
   }, {});
   curso.associate = function(models) {
-    // curso.hasMany(models.funcaoCurso,{
+    curso.hasOne(models.funcaoCurso,{
 
-    //   foreignKey: 'cursoId', 
-    //   targetKey: 'cursoId'
+       foreignKey: 'cursoId', 
+       targetKey: 'cursoId'
       
-    // })
-    // curso.hasMany(models.funcionarioCurso,{
+     })
+     curso.hasMany(models.funcionarioCurso,{
 
-    //   foreignKey: 'cursoId', 
-    //   targetKey: 'cursoId'
+       foreignKey: 'cursoId', 
+       targetKey: 'cursoId'
       
-    // })
+     })
   };
   return curso;
 };
