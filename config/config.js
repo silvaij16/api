@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "root",
     "database": "Picorestdb",
     "host": "localhost",
     "dialect": "mariadb",
