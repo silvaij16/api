@@ -10,14 +10,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   funcionarioCurso.associate = function(models) {
     funcionarioCurso.belongsTo(models.funcionario,{
-      through: 'funcionarioCursos',
-      foreignKey: 'funcionarioId', 
-      soucerKey: 'funcionarioId'  
+      foreignKey: 'funcionarioId'
+
     })
     funcionarioCurso.belongsTo(models.curso,{
-      through: 'funcionarioCursos',
-      foreignKey: 'cursoId', 
-      soucerKey: 'cursoId'  
+      foreignKey: 'cursoId'
+        
     })
   };
   return funcionarioCurso;

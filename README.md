@@ -191,6 +191,64 @@ module.exports = function(app){
     }
 
 
+INSERTS
+
+
+
+
+
+INSERT INTO `cursos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('java','2019-11-13','2019-11-13');
+INSERT INTO `cursos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('javascript','2019-11-13','2019-11-13');
+INSERT INTO `cursos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('c#','2019-11-13','2019-11-13');
+INSERT INTO `cursos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('c++','2019-11-13','2019-11-13');
+INSERT INTO `cursos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('web','2019-11-13','2019-11-13');
+
+
+INSERT INTO `setors` (`descricao`,`createdAt`,`updatedAt`) VALUES ('Diretoria','2019-11-13','2019-11-13');
+INSERT INTO `setors` (`descricao`,`createdAt`,`updatedAt`) VALUES ('inovação','2019-11-13','2019-11-13');
+INSERT INTO `setors` (`descricao`,`createdAt`,`updatedAt`) VALUES ('desemvolvimento','2019-11-13','2019-11-13');
+INSERT INTO `setors` (`descricao`,`createdAt`,`updatedAt`) VALUES ('RH','2019-11-13','2019-11-13');
+INSERT INTO `setors` (`descricao`,`createdAt`,`updatedAt`) VALUES ('UX','2019-11-13','2019-11-13');
+
+
+INSERT INTO `funcaos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('Analista','2019-11-13','2019-11-13');
+INSERT INTO `funcaos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('Analista jr','2019-11-13','2019-11-13');
+INSERT INTO `funcaos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('Analista senior','2019-11-13','2019-11-13');
+INSERT INTO `funcaos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('Analista pleno','2019-11-13','2019-11-13');
+INSERT INTO `funcaos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('gerente','2019-11-13','2019-11-13');
+
+
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Israel Jerônimo','kfkfkf@kfkf.com','d4d4dd4','2019-11-13','2019-11-13');
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Ramon Uriel','kfkfkf@kfkf.com','d4d4dd4','2019-11-13','2019-11-13');
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Emanuel','kfkfkf@kfkf.com','d4d4dd4','2019-11-13','2019-11-13');
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('John','kfkfkf@kfkf.com','d4d4dd4','2019-11-13','2019-11-13');
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Mateus','kfkfkf@kfkf.com','d4d4dd4','2019-11-13','2019-11-13');
+
+
+INSERT INTO `funcionarios` (`matricula`,`cpf`,`ctps`,`admissao`,`demissao`,`sexo`,`numero`,`logradouro`,`bairro`,`cidade`,`uf`,`usuarioId`,`setorId`,
+`funcaoId`,`createdAt`,`updatedAt`) VALUES ('4d4d','1444525','555554','2019-11-13','2019-11-13','m','124','rua 1','longe','far away','pe',1, 1, 1,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarios` (`matricula`,`cpf`,`ctps`,`admissao`,`demissao`,`sexo`,`numero`,`logradouro`,`bairro`,`cidade`,`uf`,`usuarioId`,`setorId`,
+`funcaoId`,`createdAt`,`updatedAt`) VALUES ('4d4d','144452','555554','2019-11-13','2019-11-13','m','124','rua 1','longe','far away','pe', 2, 2, 2,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarios` (`matricula`,`cpf`,`ctps`,`admissao`,`demissao`,`sexo`,`numero`,`logradouro`,`bairro`,`cidade`,`uf`,`usuarioId`,`setorId`,
+`funcaoId`,`createdAt`,`updatedAt`) VALUES ('4d4d','14445','555554','2019-11-13','2019-11-13','m','124','rua 1','longe','far away','pe', 3, 3, 3,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarios` (`matricula`,`cpf`,`ctps`,`admissao`,`demissao`,`sexo`,`numero`,`logradouro`,`bairro`,`cidade`,`uf`,`usuarioId`,`setorId`,
+`funcaoId`,`createdAt`,`updatedAt`) VALUES ('4d4d','144452554','555554','2019-11-13','2019-11-13','m','124','rua 1','longe','far away','pe', 4, 4, 4,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarios` (`matricula`,`cpf`,`ctps`,`admissao`,`demissao`,`sexo`,`numero`,`logradouro`,`bairro`,`cidade`,`uf`,`usuarioId`,`setorId`,
+`funcaoId`,`createdAt`,`updatedAt`) VALUES ('4d4d','144452554','555554','2019-11-13','2019-11-13','m','124','rua 1','longe','far away','pe', 5, 5, 5,'2019-11-13','2019-11-13');
+
+
+INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 1, 1,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 2, 2,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 3, 3,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 4, 4,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 5, 5,'2019-11-13','2019-11-13');
+
+
+
+
+
+
+
 https://sequelize.org/master/manual/migrations.html#creating-first-model--and-migration-
 https://medium.com/@rogeriothe_48115/relacionamentos-com-sequelize-guia-final-2b3baf21b2a1
 https://blog.rocketseat.com.br/nodejs-express-sequelize/
