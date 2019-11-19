@@ -20,7 +20,7 @@ module.exports = {
                         attributes:['id','descricao']
                       }//,{
                     //     model: db.funcionariocurso,
-                    //     attributes:['id','comprovante']
+                    //     attributes:['id','comprovante'],
                         // include: {
                         //     model: db.curso,
                         //     attributes:['id','descricao']
@@ -107,9 +107,28 @@ module.exports = {
 
         }
     },
+    
+
+
+       
     findByPk: async(req,res)=>{
         try{
-            let result = await db.funcionario.findByPk(req.params.id)
+            let result = await db.funcionario.findByPk(req.params.id,{attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'],
+            include: 
+            [
+                {model: db.usuario,
+                attributes:['id','nome','email','passWorld']  
+            },{
+                model: db.setor,
+                attributes:['id','descricao']
+            },{
+                model: db.funcao,
+                attributes:['id','descricao']
+              }
+
+            ] 
+            
+            })
             res.json(result)
 
         }catch(error){

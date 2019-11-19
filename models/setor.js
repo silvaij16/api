@@ -4,12 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     descricao: DataTypes.STRING
   }, {});
   setor.associate = function(models) {
-    // setor.hasMany(models.funcionario,{
+    setor.hasMany(models.funcionario,{
   
-    //   foreignKey: 'setorId', 
-    //   targetKey: 'setorId'
+      foreignKey: 'setorId'
       
-    // })
+    })
   };
   return setor;
 };

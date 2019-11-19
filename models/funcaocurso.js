@@ -5,15 +5,14 @@ module.exports = (sequelize, DataTypes) => {
     cursoId: DataTypes.INTEGER
   }, {});
   funcaoCurso.associate = function(models) {
-    funcaoCurso.belongsToMany(models.funcao,{
-      through: 'funcaoCursos',
-      foreignKey: 'funcaoId', 
-      soucerKey: 'funcaoId'  
+    funcaoCurso.belongsTo(models.funcao,{
+
+      foreignKey: 'funcaoId'
+
     })
-    funcaoCurso.belongsToMany(models.curso,{
-      through: 'funcaoCursos',
-      foreignKey: 'cursoId', 
-      soucerKey: 'cursoId'  
+    funcaoCurso.belongsTo(models.curso,{
+    
+      foreignKey: 'cursoId'
     })
   };
   return funcaoCurso;

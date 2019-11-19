@@ -3,14 +3,69 @@ let db = require("../models")
 module.exports = {
 
     findAll:async (req,res)=>{
-        try{
-            let funcionarioCurso = await db.funcionarioCurso.findAll({})
-            res.json(funcionarioCurso)
-        }
-        catch(error){
-            sendStatus(400)
-        }
+        //var funcionarioFiltrado = [];
+            try{
+                let funcionariocurso = await db.funcionarioCurso.findAll({
+                    attributes:['id','cargaHoraria','dataInicio','dataConclusao'],
+                    include: 
+                    ([
+                      {
+                        model: db.funcionario,
+                        attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'], 
+                            include: 
+                            [
+                                {model: db.usuario,
+                                    attributes:['id','nome','email','passWorld']  
+                                },{
+                                    model: db.setor,
+                                    attributes:['id','descricao']
+                                },{
+                                    model: db.funcao,
+                                    attributes:['id','descricao']
+                                  }
+
+                            ]
+
+                      },{
+                          model: db.curso,
+                          attributes:['id','descricao']
+                        }
+
+                    ])
+                 })
+                // for (var i = 0; i < funcionariocurso.length; i++) {
+                //  funcionarioFiltrado.push({
+                //  id: funcionariocurso[i].id,
+                //  nome: funcionariocurso[i].funcionario.usuario.nome,
+                //  setor: funcionariocurso[i].funcionario.setor.descricao,
+                //  funcao: funcionariocurso[i].funcionario.funcao.descricao,
+                //  //cursoId: funcionariocurso[i].funcionariocurso.comprovante
+                //  curso: funcionariocurso[i].curso.descricao
+                // });
+    
+                // }
+    
+                res.json(funcionariocurso);
+            }
+            catch(error){
+                res.sendStatus(400)
+            }
     },
+
+
+
+
+
+
+    // findAll:async (req,res)=>{
+    //     try{
+    //         let funcionarioCurso = await db.funcionarioCurso.findAll({})
+    //         res.json(funcionarioCurso)
+    //     }
+    //     catch(error){
+    //         sendStatus(400)
+    //     }
+    // },
     create: async(req,res)=>{
 
         try{

@@ -31,8 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     
     funcionario.hasMany(models.funcionarioCurso,{
 
-      foreignKey: 'funcionarioId', 
-      targetKey: 'funcionarioId'
+      foreignKey: 'funcionarioId'
         
     })
   };
