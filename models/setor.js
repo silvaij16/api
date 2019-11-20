@@ -6,8 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   setor.associate = function(models) {
     setor.hasMany(models.funcionario,{
   
-      foreignKey: 'setorId', 
-      targetKey: 'setorId'
+      foreignKey: 'setorId'
       
     })
   };

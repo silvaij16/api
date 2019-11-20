@@ -18,15 +18,23 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   funcionario.associate = function(models) {
     funcionario.belongsTo(models.usuario,{ 
-      foreignKey: 'usuarioId',
-      soucerKey: 'usuarioId'
+      foreignKey: 'usuarioId'
     })
+    
+    funcionario.belongsTo(models.setor,{ 
+      foreignKey: 'setorId'
+    })
+
+    funcionario.belongsTo(models.funcao,{ 
+      foreignKey: 'funcaoId'
+    })
+    
     funcionario.hasMany(models.funcionarioCurso,{
 
-      foreignKey: 'funcionarioId', 
-      targetKey: 'funcionarioId'
-      
+      foreignKey: 'funcionarioId'
+        
     })
   };
   return funcionario;
 };
+

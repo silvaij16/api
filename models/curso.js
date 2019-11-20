@@ -9,16 +9,14 @@ module.exports = (sequelize, DataTypes) => {
   curso.associate = function(models) {
     curso.hasMany(models.funcaoCurso,{
 
-      foreignKey: 'cursoId', 
-      targetKey: 'cursoId'
+       foreignKey: 'cursoId'
       
-    })
-    curso.hasMany(models.funcionarioCurso,{
+     })
+     curso.hasMany(models.funcionarioCurso,{
 
-      foreignKey: 'cursoId', 
-      targetKey: 'cursoId'
+       foreignKey: 'cursoId'
       
-    })
+     })
   };
   return curso;
 };

@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => {
     cursoId: DataTypes.INTEGER
   }, {});
   funcionarioCurso.associate = function(models) {
-    // associations can be defined here
+    funcionarioCurso.belongsTo(models.funcionario,{
+      foreignKey: 'funcionarioId'
+
+    })
+    funcionarioCurso.belongsTo(models.curso,{
+      foreignKey: 'cursoId'
+        
+    })
   };
   return funcionarioCurso;
 };

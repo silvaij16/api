@@ -6,14 +6,12 @@ module.exports = (sequelize, DataTypes) => {
   funcao.associate = function(models) {
     funcao.hasMany(models.funcionario,{
 
-      foreignKey: 'funcaoId', 
-      targetKey: 'funcaoId'
+      foreignKey: 'funcaoId'
       
     })
     funcao.hasMany(models.funcaoCurso,{
 
-      foreignKey: 'funcaoId', 
-      targetKey: 'funcaoId'
+      foreignKey: 'funcaoId'
       
     })
   };

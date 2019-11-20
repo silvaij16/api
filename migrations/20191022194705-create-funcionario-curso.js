@@ -26,8 +26,7 @@ module.exports = {
         references:{
           model: "funcionarios",
           key: "id"
-        },
-        onDelete: "CASCADE"
+        }
       },
       cursoId: {
         type: Sequelize.INTEGER,
@@ -35,8 +34,7 @@ module.exports = {
         references:{
           model: "cursos",
           key: "id"
-        },
-        onDelete: "CASCADE"
+        }
       },
       createdAt: {
         allowNull: false,

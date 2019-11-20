@@ -8,7 +8,7 @@ module.exports = {
             res.json(usuario)
         }
         catch(error){
-            sendStatus(400)
+            res.sendStatus(400)
         }
     },
     create: async(req,res)=>{

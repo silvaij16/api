@@ -25,6 +25,17 @@ module.exports = function(app){
     .put(funcaoController.update)
     .delete(funcaoController.delete);
     
+    //funcaoCurso
+    var funcaoCursoController = require('../controllers/funcaoCursoController')
+        
+    app.route('/funcaoCursos')
+    .get(funcaoCursoController.findAll)
+    .post(funcaoCursoController.create);
+    
+    app.route('/funcaoCursos/:id')
+    .get(funcaoCursoController.findByPk)
+    .put(funcaoCursoController.update)
+    .delete(funcaoCursoController.delete);
     
     //funcionario
     var funcionarioController = require('../controllers/funcionarioController')
@@ -38,6 +49,17 @@ module.exports = function(app){
     .put(funcionarioController.update)
     .delete(funcionarioController.delete);
     
+    //funcionarioCurso
+    var funcionarioCursoController = require('../controllers/funcionarioCursoController')
+        
+    app.route('/funcionarioCursos')
+    .get(funcionarioCursoController.findAll)
+    .post(funcionarioCursoController.create);
+    
+    app.route('/funcionarioCursos/:id')
+    .get(funcionarioCursoController.findByPk)
+    .put(funcionarioCursoController.update)
+    .delete(funcionarioCursoController.delete);
     
     //setor
     var setorController = require('../controllers/setorController')
