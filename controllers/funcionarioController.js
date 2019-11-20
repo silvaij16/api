@@ -116,8 +116,27 @@ module.exports = {
             let result = await db.funcionario.findByPk(req.params.id,{attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'],
             include: 
             [
-                {model: db.usuario,
-                attributes:['id','nome','email','passWorld']  
+               {model: db.usuario,
+                attributes:['id','nome','email','passWorld'], 
+                include: 
+                [
+                    {model: db.funcionario,
+                     attributes:['matricula'],
+                     include: 
+                [
+                    {model: db.funcionarioCurso,
+                        attributes:['comprovante'],
+                        include: 
+                        [
+                            {model: db.curso,
+                             attributes:['descricao'],
+                                 
+                            }    
+                        ]
+                    }
+                ]
+                    }
+                ]
             },{
                 model: db.setor,
                 attributes:['id','descricao']
@@ -126,7 +145,7 @@ module.exports = {
                 attributes:['id','descricao']
               }
 
-            ] 
+            ]
             
             })
             res.json(result)

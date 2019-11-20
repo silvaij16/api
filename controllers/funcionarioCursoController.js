@@ -23,9 +23,7 @@ module.exports = {
                                     model: db.funcao,
                                     attributes:['id','descricao']
                                   }
-
                             ]
-
                       },{
                           model: db.curso,
                           attributes:['id','descricao']
@@ -33,17 +31,16 @@ module.exports = {
 
                     ])
                  })
-                for (var i = 0; i < funcionariocurso.length; i++) {
-                 funcionarioFiltrado.push({
-                 id: funcionariocurso[i].id,
-                 nome: funcionariocurso[i].funcionario.usuario.nome,
-                 setor: funcionariocurso[i].funcionario.setor.descricao,
-                 funcao: funcionariocurso[i].funcionario.funcao.descricao,
-                 curso: funcionariocurso[i].curso.descricao,
-                 comprovante: funcionariocurso[i].comprovante
-                });
-    
-                }
+                funcionariocurso.forEach(funcionarioCurso => {
+                    funcionarioFiltrado.push({
+                        id: funcionarioCurso.id,
+                        nome: funcionarioCurso.funcionario.usuario.nome,
+                        setor: funcionarioCurso.funcionario.setor.descricao,
+                        funcao: funcionarioCurso.funcionario.funcao.descricao,
+                        curso: funcionarioCurso.curso.descricao,
+                        comprovante: funcionarioCurso.comprovante
+                    });
+                })
     
                 res.json(funcionarioFiltrado);
             }
@@ -52,20 +49,6 @@ module.exports = {
             }
     },
 
-
-
-
-
-
-    // findAll:async (req,res)=>{
-    //     try{
-    //         let funcionarioCurso = await db.funcionarioCurso.findAll({})
-    //         res.json(funcionarioCurso)
-    //     }
-    //     catch(error){
-    //         sendStatus(400)
-    //     }
-    // },
     create: async(req,res)=>{
 
         try{
