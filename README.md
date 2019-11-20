@@ -1,11 +1,11 @@
 mkdir api
 
-npm init -y(cria o projeto)
+npm init -y(create the project)
 
-npm install -s express body-parser sequelize mariadb mysql2(instala as dependências)
+npm install -s express body-parser sequelize mariadb mysql2(install the dependences)
 npm i -D nodemon sequelize-cli
 
-code .(abri o visual code)
+code .(open the visual code)
 
 crie o arquivo server.js
 
@@ -197,6 +197,7 @@ INSERTS
 
 
 
+
 INSERT INTO `cursos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('java','2019-11-13','2019-11-13');
 INSERT INTO `cursos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('javascript','2019-11-13','2019-11-13');
 INSERT INTO `cursos` (`descricao`,`createdAt`,`updatedAt`) VALUES ('c#','2019-11-13','2019-11-13');
@@ -237,11 +238,11 @@ INSERT INTO `funcionarios` (`matricula`,`cpf`,`ctps`,`admissao`,`demissao`,`sexo
 `funcaoId`,`createdAt`,`updatedAt`) VALUES ('4d4d','144452554','555554','2019-11-13','2019-11-13','m','124','rua 1','longe','far away','pe', 5, 5, 5,'2019-11-13','2019-11-13');
 
 
-INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 1, 1,'2019-11-13','2019-11-13');
-INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 2, 2,'2019-11-13','2019-11-13');
-INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 3, 3,'2019-11-13','2019-11-13');
-INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 4, 4,'2019-11-13','2019-11-13');
-INSERT INTO `funcionarioCursos` (`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('36 Horas','2019-11-13','2019-11-13', 5, 5,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarioCursos` (`comprovante`,`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('comprovante93939','36 Horas','2019-11-13','2019-11-13', 1, 1,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarioCursos` (`comprovante`,`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('comprovante93909','36 Horas','2019-11-13','2019-11-13', 2, 2,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarioCursos` (`comprovante`,`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('comprovante93939','36 Horas','2019-11-13','2019-11-13', 3, 3,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarioCursos` (`comprovante`,`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('comprovante93939','36 Horas','2019-11-13','2019-11-13', 4, 4,'2019-11-13','2019-11-13');
+INSERT INTO `funcionarioCursos` (`comprovante`,`cargaHoraria`,`dataInicio`,`dataConclusao`,`funcionarioId`,`cursoId`,`createdAt`,`updatedAt`) VALUES ('comprovante93939','36 Horas','2019-11-13','2019-11-13', 5, 5,'2019-11-13','2019-11-13');
 
 
 

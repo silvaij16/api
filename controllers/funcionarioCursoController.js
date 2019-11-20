@@ -3,10 +3,10 @@ let db = require("../models")
 module.exports = {
 
     findAll:async (req,res)=>{
-        //var funcionarioFiltrado = [];
+        var funcionarioFiltrado = [];
             try{
                 let funcionariocurso = await db.funcionarioCurso.findAll({
-                    attributes:['id','cargaHoraria','dataInicio','dataConclusao'],
+                    attributes:['id','comprovante','cargaHoraria','dataInicio','dataConclusao'],
                     include: 
                     ([
                       {
@@ -33,19 +33,19 @@ module.exports = {
 
                     ])
                  })
-                // for (var i = 0; i < funcionariocurso.length; i++) {
-                //  funcionarioFiltrado.push({
-                //  id: funcionariocurso[i].id,
-                //  nome: funcionariocurso[i].funcionario.usuario.nome,
-                //  setor: funcionariocurso[i].funcionario.setor.descricao,
-                //  funcao: funcionariocurso[i].funcionario.funcao.descricao,
-                //  //cursoId: funcionariocurso[i].funcionariocurso.comprovante
-                //  curso: funcionariocurso[i].curso.descricao
-                // });
+                for (var i = 0; i < funcionariocurso.length; i++) {
+                 funcionarioFiltrado.push({
+                 id: funcionariocurso[i].id,
+                 nome: funcionariocurso[i].funcionario.usuario.nome,
+                 setor: funcionariocurso[i].funcionario.setor.descricao,
+                 funcao: funcionariocurso[i].funcionario.funcao.descricao,
+                 curso: funcionariocurso[i].curso.descricao,
+                 comprovante: funcionariocurso[i].comprovante
+                });
     
-                // }
+                }
     
-                res.json(funcionariocurso);
+                res.json(funcionarioFiltrado);
             }
             catch(error){
                 res.sendStatus(400)
@@ -97,16 +97,69 @@ module.exports = {
 
         }
     },
+
     findByPk: async(req,res)=>{
-        try{
-            let result = await db.funcionarioCurso.findByPk(req.params.id)
-            res.json(result)
+        var funcionarioFiltrado = [];
+            try{
+                let funcionariocurso = await db.funcionarioCurso.findByPk(req.params.id,{attributes:['id','comprovante','cargaHoraria','dataInicio','dataConclusao'],
+                    include: 
+                    ([
+                      {
+                        model: db.funcionario,
+                        attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'], 
+                            include: 
+                            [
+                                {model: db.usuario,
+                                    attributes:['id','nome','email','passWorld']  
+                                },{
+                                    model: db.setor,
+                                    attributes:['id','descricao']
+                                },{
+                                    model: db.funcao,
+                                    attributes:['id','descricao']
+                                  }
 
-        }catch(error){
-            res.sendStatus(400)
+                            ]
 
-        }
+                      },{
+                          model: db.curso,
+                          attributes:['id','descricao']
+                        }
+
+                    ])
+                 })
+                for (var i = 0; i < funcionariocurso.length; i++) {
+                 funcionarioFiltrado.push({
+                 id: funcionariocurso[i].id,
+                 nome: funcionariocurso[i].funcionario.usuario.nome,
+                 setor: funcionariocurso[i].funcionario.setor.descricao,
+                 funcao: funcionariocurso[i].funcionario.funcao.descricao,
+                 curso: funcionariocurso[i].curso.descricao,
+                 comprovante: funcionariocurso[i].comprovante
+                });
+    
+                }
+    
+                res.json(funcionarioFiltrado);
+            }
+            catch(error){
+                res.sendStatus(400)
+            }
     }
+
+
+
+
+    // findByPk: async(req,res)=>{
+    //     try{
+    //         let result = await db.funcionarioCurso.findByPk(req.params.id)
+    //         res.json(result)
+
+    //     }catch(error){
+    //         res.sendStatus(400)
+
+    //     }
+    // }
 
 }
 

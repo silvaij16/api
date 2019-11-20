@@ -9,7 +9,7 @@ module.exports = {
                 let funcionario = await db.funcionario.findAll({
                     attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'],
                     include: 
-                    [
+                    ([
                         {model: db.usuario,
                         attributes:['id','nome','email','passWorld']  
                     },{
@@ -26,7 +26,7 @@ module.exports = {
                         //     attributes:['id','descricao']
                         // }
                      //}
-                    ]
+                    ])
                 })
                 for (var i = 0; i < funcionario.length; i++) {
                  funcionarioFiltrado.push({
