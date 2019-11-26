@@ -36,7 +36,8 @@ module.exports = {
   }
 }
 
-npx sequelize-cli db: create (cria o banco, setado no arquivo de configuração)
+crie o banco, igual no arquivo de configuração
+
 
 CRIANDO AS MIGRATIONS:(não deixe espaços entre os atributos)
 npx sequelize-cli model:generate --name usuario --attributes nome:STRING,email:STRING,passWorld:STRING
@@ -60,43 +61,91 @@ npx sequelize-cli db:migrate:undo:all --to XXXXXXXXXXXXXX-create-posts.js(desfaz
 
 associações dos módulos:
 
+
+curso.associate = function(models) {
+    curso.hasMany(models.funcaoCurso,{
+
+       foreignKey: 'cursoId'
+      
+     })
+     curso.hasMany(models.funcionarioCurso,{
+
+       foreignKey: 'cursoId'
+      
+     })
+  };
+
+funcao.associate = function(models) {
+    funcao.hasMany(models.funcionario,{
+
+      foreignKey: 'funcaoId'
+      
+    })
+    funcao.hasMany(models.funcaoCurso,{
+
+      foreignKey: 'funcaoId'
+      
+    })
+  };
+
 funcaoCurso.associate = function(models) {
-    funcaoCurso.belongsToMany(models.funcao,{
-      through: 'funcaoCursos',
-      foreignKey: 'funcaoId', 
-      soucerKey: 'funcaoId'  
+    funcaoCurso.belongsTo(models.funcao,{
+
+      foreignKey: 'funcaoId'
+
     })
-    funcaoCurso.belongsToMany(models.curso,{
-      through: 'funcaoCursos',
-      foreignKey: 'cursoId', 
-      soucerKey: 'cursoId'  
+    funcaoCurso.belongsTo(models.curso,{
+    
+      foreignKey: 'cursoId'
     })
+  };
 
 funcionario.associate = function(models) {
     funcionario.belongsTo(models.usuario,{ 
-      foreignKey: 'usuarioId',
-      soucerKey: 'usuarioId'
+      foreignKey: 'usuarioId'
     })
+    
     funcionario.belongsTo(models.setor,{ 
-      foreignKey: 'setorId',
-      soucerKey: 'setorId'
-    })
-    funcionario.belongsTo(models.funcao,{ 
-      foreignKey: 'funcaoId',
-      soucerKey: 'funcaoId'
+      foreignKey: 'setorId'
     })
 
-funcionarioCurso.associate = function(models) {
-    funcionarioCurso.belongsToMany(models.funcionario,{
-      through: 'funcionarioCursos',
-      foreignKey: 'funcionarioId', 
-      soucerKey: 'funcionarioId'  
+    funcionario.belongsTo(models.funcao,{ 
+      foreignKey: 'funcaoId'
     })
-    funcionarioCurso.belongsToMany(models.curso,{
-      through: 'funcionarioCursos',
-      foreignKey: 'cursoId', 
-      soucerKey: 'cursoId'  
+    
+    funcionario.hasMany(models.funcionarioCurso,{
+
+      foreignKey: 'funcionarioId'
+        
     })
+  };
+
+  funcionarioCurso.associate = function(models) {
+    funcionarioCurso.belongsTo(models.funcionario,{
+      foreignKey: 'funcionarioId'
+
+    })
+    funcionarioCurso.belongsTo(models.curso,{
+      foreignKey: 'cursoId'
+        
+    })
+  };
+
+  setor.associate = function(models) {
+    setor.hasMany(models.funcionario,{
+  
+      foreignKey: 'setorId'
+      
+    })
+  };
+
+  usuario.associate = function(models) {
+    usuario.hasOne(models.funcionario,{
+
+      foreignKey: 'usuarioId'
+     
+    })
+  };
 
 Rotas:
 

@@ -48,10 +48,15 @@ module.exports = {
         },*/
 
 
+
     findAll: async (req,res)=>{
         try{
-            let funcionario = await db.funcionario.sequelize.query('SELECT u.nome, s.descricao AS setor, f.descricao AS funcao, fr.matricula, fc.comprovante, c.descricao AS curso FROM usuarios AS u INNER JOIN funcionarios AS fr ON u.id = fr.usuarioId INNER JOIN setors AS s ON s.id = fr.setorId INNER JOIN funcaos AS f ON f.id = fr.funcaoId INNER JOIN funcionarioCursos AS fc ON fr.id = fc.funcionarioId INNER JOIN cursos AS c ON c.id = fc.cursoId WHERE u.id = :usuarioId ',
-            { replacements: { usuarioId: req.body.usuarioId  }, type: db.funcionario.sequelize.QueryTypes.SELECT }
+            let funcionario = await db.funcionario.sequelize.query('SELECT u.nome, s.descricao AS setor, f.descricao AS funcao,'
+            + ' fr.matricula, fc.comprovante, c.descricao AS curso FROM usuarios AS u INNER JOIN funcionarios '
+            + ' AS fr ON u.id = fr.usuarioId INNER JOIN setors AS s ON s.id = fr.setorId INNER JOIN funcaos AS f '
+            + ' ON f.id = fr.funcaoId INNER JOIN funcionarioCursos AS fc ON fr.id = fc.funcionarioId INNER JOIN '
+            + ' cursos AS c ON c.id = fc.cursoId ',
+            { type: db.funcionario.sequelize.QueryTypes.SELECT }
             )
             res.json(funcionario)
         }
@@ -61,8 +66,24 @@ module.exports = {
         }
     },
 
+    // findByPk: async (req,res)=>{
+    //     try{
+    //         let funcionario = await db.funcionario.sequelize.query('SELECT u.nome, s.descricao AS setor, f.descricao AS funcao,'
+    //         + ' fr.matricula, fc.comprovante, c.descricao AS curso FROM usuarios AS u INNER JOIN funcionarios '
+    //         + ' AS fr ON u.id = fr.usuarioId INNER JOIN setors AS s ON s.id = fr.setorId INNER JOIN funcaos AS f '
+    //         + ' ON f.id = fr.funcaoId INNER JOIN funcionarioCursos AS fc ON fr.id = fc.funcionarioId INNER JOIN '
+    //         + ' cursos AS c ON c.id = fc.cursoId WHERE u.id = :userId ',
+    //         { replacements: { userId: req.body.usuarioId  }, type: db.funcionario.sequelize.QueryTypes.SELECT }
+    //         )
+    //         res.json(funcionario)
+    //     }
+    //     catch(error){
+    //         console.log(error)
+    //         res.sendStatus(400)
+    //     }
+    // },
 
-
+   
 //     sequelize.query('SELECT * FROM users WHERE name LIKE :search_name ',
 //     { replacements: { search_name: 'ben%'  }, type: sequelize.QueryTypes.SELECT }
 //   ).then(projects => {
@@ -89,7 +110,14 @@ module.exports = {
     },
     update: async(req,res)=>{
         try{
-            let result = await db.funcionario.update(req.body,{where: {id: req.params.id}})
+            let result = await db.funcionario.update(
+                {
+                    "matricula": req.body.matricula,
+                    "cpf":req.body.cpf,
+                    "ctps":req.body.ctps
+                },
+                {where: {id: req.params.id}})
+            //let result = await db.funcionario.update(req.body,{where: {id: req.params.id}})
             res.sendStatus(204)
 
         }catch(error){
