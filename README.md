@@ -281,6 +281,11 @@ INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALU
 INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Emanuel','kfkfkf@kfkf.com','d4d4dd4','2019-11-13','2019-11-13');
 INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('John','kfkfkf@kfkf.com','d4d4dd4','2019-11-13','2019-11-13');
 INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Mateus','kfkfkf@kfkf.com','d4d4dd4','2019-11-13','2019-11-13');
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Israel Jerônimo2','israel@kfkf.com','1111','2019-11-13','2019-11-13');
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Ramon Uriel2','uriel@kfkf.com','2222','2019-11-13','2019-11-13');
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Emanuel2','emanuel@kfkf.com','3333','2019-11-13','2019-11-13');
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('John2','john@kfkf.com','4444','2019-11-13','2019-11-13');
+INSERT INTO `usuarios` (`nome`,`email`,`passWorld`,`createdAt`,`updatedAt`) VALUES ('Mateus2','mateus@kfkf.com','5555','2019-11-13','2019-11-13');
 
 
 INSERT INTO `funcionarios` (`matricula`,`cpf`,`ctps`,`admissao`,`demissao`,`sexo`,`numero`,`logradouro`,`bairro`,`cidade`,`uf`,`usuarioId`,`setorId`,

@@ -4,7 +4,14 @@ module.exports = {
 
     findAll:async (req,res)=>{
         try{
-            let usuario = await db.usuario.findAll({})
+            let usuario = await db.usuario.findAll({
+                attributes: ['email', 'passWorld'],
+                where: { 
+                  email: req.body.email, 
+                  passWorld: req.body.passWorld
+                }
+            })
+            //res.send(usuario)
             res.json(usuario)
         }
         catch(error){
@@ -43,9 +50,13 @@ module.exports = {
         }
     },
     findByPk: async(req,res)=>{
+        var usuario = []
         try{
             let result = await db.usuario.findByPk(req.params.id)
-            res.json(result)
+            usuario.push({id: result.id,
+                          nome: result.nome
+            })
+            res.json(usuario)
 
         }catch(error){
             res.sendStatus(400)

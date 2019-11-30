@@ -27,7 +27,7 @@ module.exports = {
             + ' AS fr ON u.id = fr.usuarioId INNER JOIN setors AS s ON s.id = fr.setorId INNER JOIN funcaos AS f '
             + ' ON f.id = fr.funcaoId INNER JOIN funcionarioCursos AS fc ON fr.id = fc.funcionarioId INNER JOIN '
             + ' cursos AS c ON c.id = fc.cursoId WHERE fr.id = :funcionarioId ',
-            { replacements: { funcionarioId: req.params.id  }, type: db.funcionario.sequelize.QueryTypes.SELECT }
+            { replacements: { funcionarioId: req.params.id }, type: db.funcionario.sequelize.QueryTypes.SELECT }
             )
             res.json(funcionario)
         }
@@ -39,7 +39,7 @@ module.exports = {
 
 
     create: async(req,res)=>{
-
+            //if(function())
         try{
             let funcionario = await db.funcionario.create(
                 {
