@@ -4,15 +4,18 @@ module.exports = {
 
     findAll:async (req,res)=>{
         try{
-            let usuario = await db.usuario.findAll({
+            /*let usuario = await db.usuario.findAll({
                 attributes: ['email', 'passWorld'],
                 where: { 
-                  email: req.body.email, 
+                  //email: req.body.email, 
                   passWorld: req.body.passWorld
                 }
             })
             //res.send(usuario)
+            res.json(usuario)*/
+            let usuario = await db.usuario.findAll({})
             res.json(usuario)
+
         }
         catch(error){
             res.sendStatus(400)

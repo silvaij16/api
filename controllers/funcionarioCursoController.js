@@ -121,6 +121,19 @@ module.exports = {
                  comprovante: funcionariocurso.comprovante
                 });
 
+
+                /* for (var i = 0; i < funcionariocurso.length; i++) {
+                 funcionarioFiltrado.push({
+                 id: funcionariocurso[i].id,
+                 nome: funcionariocurso[i].funcionario.usuario.nome,
+                 setor: funcionariocurso[i].funcionario.setor.descricao,
+                 funcao: funcionariocurso[i].funcionario.funcao.descricao,
+                 curso: funcionariocurso[i].curso.descricao,
+                 comprovante: funcionariocurso[i].comprovante
+                });
+    
+                }*/
+
     
                 res.json(funcionarioFiltrado)
             }
