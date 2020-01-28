@@ -6,7 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     passWorld: DataTypes.STRING
   }, {});
   usuario.associate = function(models) {
-    // associations can be defined here
+    usuario.hasOne(models.funcionario,{
+
+      foreignKey: 'usuarioId'
+     
+    })
   };
   return usuario;
 };
