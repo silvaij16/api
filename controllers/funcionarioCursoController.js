@@ -3,14 +3,52 @@ let db = require("../models")
 module.exports = {
 
     findAll:async (req,res)=>{
-        try{
-            let funcionarioCurso = await db.funcionarioCurso.findAll({})
-            res.json(funcionarioCurso)
-        }
-        catch(error){
-            sendStatus(400)
-        }
+        var funcionarioFiltrado = [];
+            try{
+                let funcionariocurso = await db.funcionarioCurso.findAll({
+                    attributes:['id','comprovante','cargaHoraria','dataInicio','dataConclusao'],
+                    include: 
+                    ([
+                      {
+                        model: db.funcionario,
+                        attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'], 
+                            include: 
+                            [
+                                {model: db.usuario,
+                                    attributes:['id','nome','email','passWorld']  
+                                },{
+                                    model: db.setor,
+                                    attributes:['id','descricao']
+                                },{
+                                    model: db.funcao,
+                                    attributes:['id','descricao']
+                                  }
+                            ]
+                      },{
+                          model: db.curso,
+                          attributes:['id','descricao']
+                        }
+
+                    ])
+                 })
+                funcionariocurso.forEach(funcionarioCurso => {
+                    funcionarioFiltrado.push({
+                        id: funcionarioCurso.id,
+                        nome: funcionarioCurso.funcionario.usuario.nome,
+                        setor: funcionarioCurso.funcionario.setor.descricao,
+                        funcao: funcionarioCurso.funcionario.funcao.descricao,
+                        curso: funcionarioCurso.curso.descricao,
+                        comprovante: funcionarioCurso.comprovante
+                    });
+                })
+    
+                res.json(funcionarioFiltrado);
+            }
+            catch(error){
+                res.sendStatus(400)
+            }
     },
+
     create: async(req,res)=>{
 
         try{
@@ -42,16 +80,81 @@ module.exports = {
 
         }
     },
+
     findByPk: async(req,res)=>{
-        try{
-            let result = await db.funcionarioCurso.findByPk(req.params.id)
-            res.json(result)
+        var funcionarioFiltrado = [];
+            try{
+                let funcionariocurso = await db.funcionarioCurso.findByPk(req.params.id,{attributes:['id','comprovante','cargaHoraria','dataInicio','dataConclusao'],
+                    include: 
+                    ([
+                      {
+                        model: db.funcionario,
+                        attributes:['id','matricula','cpf','ctps','admissao','demissao','sexo','numero','logradouro','bairro','cidade','uf'], 
+                            include: 
+                            [
+                                {model: db.usuario,
+                                    attributes:['id','nome','email','passWorld']  
+                                },{
+                                    model: db.setor,
+                                    attributes:['id','descricao']
+                                },{
+                                    model: db.funcao,
+                                    attributes:['id','descricao']
+                                  }
 
-        }catch(error){
-            res.sendStatus(400)
+                            ]
 
-        }
+                      },{
+                          model: db.curso,
+                          attributes:['id','descricao']
+                        }
+
+                    ])
+                 })
+                 
+                 funcionarioFiltrado.push({
+                 id: funcionariocurso.id,
+                 nome: funcionariocurso.funcionario.usuario.nome,
+                 setor: funcionariocurso.funcionario.setor.descricao,
+                 funcao: funcionariocurso.funcionario.funcao.descricao,
+                 curso: funcionariocurso.curso.descricao,
+                 comprovante: funcionariocurso.comprovante
+                });
+
+
+                /* for (var i = 0; i < funcionariocurso.length; i++) {
+                 funcionarioFiltrado.push({
+                 id: funcionariocurso[i].id,
+                 nome: funcionariocurso[i].funcionario.usuario.nome,
+                 setor: funcionariocurso[i].funcionario.setor.descricao,
+                 funcao: funcionariocurso[i].funcionario.funcao.descricao,
+                 curso: funcionariocurso[i].curso.descricao,
+                 comprovante: funcionariocurso[i].comprovante
+                });
+    
+                }*/
+
+    
+                res.json(funcionarioFiltrado)
+            }
+            catch(error){
+                res.sendStatus(400)
+            }
     }
+
+
+
+
+    // findByPk: async(req,res)=>{
+    //     try{
+    //         let result = await db.funcionarioCurso.findByPk(req.params.id)
+    //         res.json(result)
+
+    //     }catch(error){
+    //         res.sendStatus(400)
+
+    //     }
+    // }
 
 }
 
