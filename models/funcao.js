@@ -4,18 +4,18 @@ module.exports = (sequelize, DataTypes) => {
     descricao: DataTypes.STRING
   }, {});
   funcao.associate = function(models) {
-    funcao.hasMany(models.funcionario,{
+    // funcao.hasMany(models.funcionario,{
 
-      foreignKey: 'funcaoId', 
-      targetKey: 'funcaoId'
+    //   foreignKey: 'funcaoId', 
+    //   targetKey: 'funcaoId'
       
-    })
-    funcao.hasMany(models.funcaoCurso,{
+    // })
+    // funcao.hasMany(models.funcaoCurso,{
 
-      foreignKey: 'funcaoId', 
-      targetKey: 'funcaoId'
+    //   foreignKey: 'funcaoId', 
+    //   targetKey: 'funcaoId'
       
-    })
+    // })
   };
   return funcao;
 };
